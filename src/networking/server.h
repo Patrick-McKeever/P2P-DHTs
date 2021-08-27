@@ -56,7 +56,6 @@ private:
             JSONCPP_STRING parse_err;
             Json::Value json_req, json_resp;
             std::string client_req_str(data_.data(), data_.data() + bytes_xfrd);
-            std::cout << "READ " << client_req_str << std::endl;
 
             if (reader_->parse(client_req_str.c_str(),
                                client_req_str.c_str() + client_req_str.length(),
@@ -187,6 +186,14 @@ public:
         if(! ec)
             new_session_->Run();
         StartAccept();
+    }
+
+    void Kill()
+    {
+        post(io_context_, [this] {
+          std::cout << "CLOSING" << std::endl;
+          acceptor_.close(); // causes .cancel() as well
+        });
     }
 
     void HandleStop()

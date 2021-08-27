@@ -16,7 +16,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 FetchContent_MakeAvailable(JsonCpp)
 
-add_executable(chord_and_dhash main.cpp src/networking/server.h src/networking/client.cpp src/networking/client.h)
+add_executable(chord_and_dhash main.cpp src/networking/server.h src/networking/client.cpp src/networking/client.h test/server_test.cpp)
 
 find_package( Boost 1.40 COMPONENTS program_options thread REQUIRED )
 find_package(Threads)
