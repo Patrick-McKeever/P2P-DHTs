@@ -82,8 +82,6 @@ DataBlock::operator std::string() const
 {
     std::string res;
 
-
-
     // "original_" is a double vector consisting of UTF codes, possibly
     // with padding.
     for(const auto &char_code : original_) {
