@@ -1,0 +1,78 @@
+{
+  "GET_PRED_OF_LOCAL_KEY": {
+    "PEER": {
+      "ID": "fffffffffffffffffffffffffffffff",
+      "MIN_KEY": "0000000000000000000000000000000",
+      "IP": "127.0.0.1",
+      "PORT": 0,
+      "NUM_SUCCS": 3,
+      "PRED": {
+        "IP_ADDR": "127.0.0.1",
+        "PORT": 1,
+        "ID": "fffffffffffffffffffffffffffffff",
+        "MIN_KEY": "0000000000000000000000000000000"
+      }
+    },
+    "KEY_TO_LOOKUP": "1000000000000000000000000000000"
+  },
+  "GET_PRED_IN_SUCC_LIST": {
+    "PEERS": [
+      {
+        "ID": "8fcd40610a285f29ad7168be553d20db",
+        "MIN_KEY": "67cd3c64a95a51229cf89ec7a252772b",
+        "IP": "127.0.0.1",
+        "PORT": 7102,
+        "NUM_SUCCS": 3,
+        "SUCCESSORS": [{
+            "ID": "f7ad227bcc0f55b3b15927475dd5a053",
+            "MIN_KEY": "8fcd40610a285f29ad7168be553d20dc",
+            "IP": "127.0.0.1",
+            "PORT": 7100
+          }, {
+            "ID": "67cd3c64a95a51229cf89ec7a252772a",
+            "MIN_KEY": "f7ad227bcc0f55b3b15927475dd5a054",
+            "IP": "127.0.0.1",
+            "PORT": 7101
+        }]
+      }, {
+        "ID": "f7ad227bcc0f55b3b15927475dd5a053",
+        "MIN_KEY": "8fcd40610a285f29ad7168be553d20dc",
+        "IP": "127.0.0.1",
+        "PORT": 7100,
+        "NUM_SUCCS": 3
+      }, {
+        "ID": "67cd3c64a95a51229cf89ec7a252772a",
+        "MIN_KEY": "f7ad227bcc0f55b3b15927475dd5a054",
+        "IP": "127.0.0.1",
+        "PORT": 7101,
+        "NUM_SUCCS": 3
+      }
+    ],
+    "KEY_TO_LOOKUP": "67cd3c64a95a51229cf89ec7a2527729",
+    "EXPECTED_PRED_ID": "f7ad227bcc0f55b3b15927475dd5a053"
+  },
+  "GET_PRED_FROM_FINGER_TABLE": {
+    "PEERS": [
+      {
+        "IP": "127.0.0.1",
+        "PORT": 7103,
+        "NUM_SUCCS": 3,
+        "ID": "459a8765538b59a2b2a046143026ed56"
+      }, {
+        "IP": "127.0.0.1",
+        "PORT": 7104,
+        "NUM_SUCCS": 3,
+        "ID": "3b74d34668f5258974b09b496fa4bb0"
+      }
+    ],
+    "KEY_TO_LOOKUP": "459a8765538b59a2b2a046143026ed57",
+    "EXPECTED_PRED_ID": "459a8765538b59a2b2a046143026ed56"
+  },
+  "GET_PRED_FAILING": {
+    "PEER": {
+      "IP": "127.0.0.1",
+      "PORT": 7105,
+      "NUM_SUCCS": 3
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "LEAVE_UPDATES_PRED": {
+    "PEERS": [
+      {
+        "COMMENT": "Tested peer.",
+        "ID": "cd2a83c733a65568be7fb1d0a6e90167",
+        "IP": "127.0.0.1",
+        "PORT": 7500,
+        "NUM_SUCCS": 3
+      }, {
+        "COMMENT": "Should be listed as pred of 7500 after 7502 leaves.",
+        "ID": "3255c12332485b68bab9e11fb17d9b06",
+        "IP": "127.0.0.1",
+        "PORT": 7501,
+        "NUM_SUCCS": 3
+      }, {
+        "COMMENT": "Will leave the chord during test.",
+        "ID": "c439b39895a851b7989c137e1acf4dae",
+        "IP": "127.0.0.1",
+        "PORT": 7502,
+        "NUM_SUCCS": 3
+      }
+    ],
+    "LEAVE_INDEX": 2,
+    "TEST_INDEX": 0,
+    "EXPECTED_PRED_ID": "3255c12332485b68bab9e11fb17d9b06"
+  },
+  "LEAVE_UPDATES_MINKEY": {
+    "PEERS": [
+      {
+        "COMMENT": "Tested peer. Should have minkey of 7504's id + 1 after peer 7505 leaves.",
+        "ID": "9a87f7fbd633530abf4640ca28349d36",
+        "IP": "127.0.0.1",
+        "PORT": 7503,
+        "NUM_SUCCS": 3
+      }, {
+        "COMMENT": "Should be listed as pred of 7503 after 7502 leaves.",
+        "ID": "504bcefb41e563ea26ed00013cd381b",
+        "IP": "127.0.0.1",
+        "PORT": 7504,
+        "NUM_SUCCS": 3
+      }, {
+        "COMMENT": "Will leave the chord during test.",
+        "ID": "81e6562aafb65417a60a980d5589e915",
+        "IP": "127.0.0.1",
+        "PORT": 7505,
+        "NUM_SUCCS": 3
+      }
+    ],
+    "LEAVE_INDEX": 2,
+    "TEST_INDEX": 0,
+    "EXPECTED_MINKEY": "504bcefb41e563ea26ed00013cd381c"
+  },
+  "LEAVE_TRANSFERS_KEYS": {
+    "PEERS": [
+      {
+        "COMMENT": "Pred of 7507.",
+        "ID": "71bb12924279552986f0e0da89afc089",
+        "IP": "127.0.0.1",
+        "PORT": 7506,
+        "NUM_SUCCS": 3
+      }, {
+        "COMMENT": "Will leave the chord during the test. Should transfer its keys to 7508.",
+        "ID": "63bdbeb3fcc5ec48426d6e69e0474f2",
+        "IP": "127.0.0.1",
+        "PORT": 7507,
+        "NUM_SUCCS": 3
+      }, {
+        "COMMENT": "Succ of 7507. Should receive its keys after test.",
+        "ID": "16a93f346c9c53829d87c28894f48cc2",
+        "IP": "127.0.0.1",
+        "PORT": 7508,
+        "NUM_SUCCS": 3
+      }
+    ],
+    "KVS_TO_TRANSFER": {
+      "6000000000000000000000000000000": "val1"
+    },
+    "LEAVE_INDEX": 1,
+    "TEST_INDEX": 2
+  }
+}

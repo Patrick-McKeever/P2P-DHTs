@@ -1,0 +1,280 @@
+{
+  "SINGLE_NODE_BETWEEN_SUCCS": {
+    "PEERS": [
+      {
+        "COMMENT": "Peer being tested.",
+        "ID": "2407bf8d6bbc5dc3b9d5d8c4316a37ea",
+        "IP": "127.0.0.1",
+        "PORT": 7300,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "1st succ of tested peer in initial configuration, 2nd after new nodes join.",
+        "ID": "448b94fd3a2c55ad89cf9bc5e7bd86f6",
+        "IP": "127.0.0.1",
+        "PORT": 7302,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "2nd succ of tested peer in initial configuration, 3rd after new nodes join.",
+        "ID": "72b898548de6521ca9a93c0988200356",
+        "IP": "127.0.0.1",
+        "PORT": 7305,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "3rd succ of tested peer in initial configuration, not a succ after new nodes join.",
+        "ID": "dd13d20b58985ddc9d9ff5d79762df2b",
+        "IP": "127.0.0.1",
+        "PORT": 7301,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "4th succ of tested peer in initial configuration, not a succ after new nodes join.",
+        "ID": "ec1b79a4e42e55918ae77b13113946ef",
+        "IP": "127.0.0.1",
+        "PORT": 7306,
+        "NUM_SUCCS": 4
+      }
+    ],
+    "JOINING_PEERS":  [
+      {
+        "COMMENT": "1st succ of tested peer in subsequent configuration.",
+        "ID": "37fd27d1ebb156f99ad2e1079f4bdb5d",
+        "IP": "127.0.0.1",
+        "PORT": 7304,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "4th succ of tested peer in subsequent configuration.",
+        "ID": "cd3835f3d2965baeb7a1a6246383a80f",
+        "IP": "127.0.0.1",
+        "PORT": 7303,
+        "NUM_SUCCS": 4
+      }
+    ],
+    "EXPECTED_SUCCS": [
+      {
+        "ID": "37fd27d1ebb156f99ad2e1079f4bdb5d",
+        "IP": "127.0.0.1",
+        "PORT": 7304
+      }, {
+        "ID": "448b94fd3a2c55ad89cf9bc5e7bd86f6",
+        "IP": "127.0.0.1",
+        "PORT": 7302
+      }, {
+        "ID": "72b898548de6521ca9a93c0988200356",
+        "IP": "127.0.0.1",
+        "PORT": 7305
+      }, {
+        "ID": "cd3835f3d2965baeb7a1a6246383a80f",
+        "IP": "127.0.0.1",
+        "PORT": 7303
+      }
+    ]
+  },
+  "MULTIPLE_NODES_BETWEEN_SUCCS":{
+    "PEERS": [
+      {
+        "COMMENT": "Peer being tested.",
+        "ID": "edcef4045f9526ca5f6d43d7e2fb4e0",
+        "IP": "127.0.0.1",
+        "PORT": 7310,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "1st succ of tested peer in initial and subsequent configurations.",
+        "ID": "1612923a4f0f5747831293c208b55b50",
+        "IP": "127.0.0.1",
+        "PORT": 7312,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "2nd succ of tested peer in initial configuration, 4th after new nodes join.",
+        "ID": "8f840db0dd3e5a00bbc8d2f4fef43729",
+        "IP": "127.0.0.1",
+        "PORT": 7313,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "3rd succ of tested peer in initial configuration, not in list after new nodes join.",
+        "ID": "9745281ac56b5565a05ba769f50f0858",
+        "IP": "127.0.0.1",
+        "PORT": 7316,
+        "NUM_SUCCS": 4
+      }
+    ],
+    "JOINING_PEERS":  [
+      {
+        "COMMENT": "2nd succ of tested peer in subsequent configuration.",
+        "ID": "222a525e9c045e2795ceb023ba643868",
+        "IP": "127.0.0.1",
+        "PORT": 7311,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "3rd succ of tested peer in subsequent configuration.",
+        "ID": "696239004dde56158ba013609d747153",
+        "IP": "127.0.0.1",
+        "PORT": 7315,
+        "NUM_SUCCS": 4
+      }
+    ],
+    "EXPECTED_SUCCS": [
+      {
+        "ID": "1612923a4f0f5747831293c208b55b50",
+        "IP": "127.0.0.1",
+        "PORT": 7312
+      }, {
+        "ID": "222a525e9c045e2795ceb023ba643868",
+        "IP": "127.0.0.1",
+        "PORT": 7311
+      }, {
+        "ID": "696239004dde56158ba013609d747153",
+        "IP": "127.0.0.1",
+        "PORT": 7315
+      }, {
+        "ID": "8f840db0dd3e5a00bbc8d2f4fef43729",
+        "IP": "127.0.0.1",
+        "PORT": 7313
+      }
+    ]
+  },
+  "CLOCKWISE_EXPANSION_NEEDED": {
+    "PEERS": [
+      {
+        "COMMENT": "Peer being tested.",
+        "ID": "c67ef4f1c1b056db862db57e9a41ebff",
+        "IP": "127.0.0.1",
+        "PORT": 7320,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "1st succ before and after new nodes join.",
+        "ID": "ef4feef2d5a75a40a4e179083adcd95e",
+        "IP": "127.0.0.1",
+        "PORT": 7322,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "2nd succ before and after new nodes join.",
+        "ID": "3ee5eb6d91f7562ab7421d354afc8628",
+        "IP": "127.0.0.1",
+        "PORT": 7324,
+        "NUM_SUCCS": 4
+      }
+    ],
+    "JOINING_PEERS": [
+      {
+        "COMMENT": "3rd succ of tested peer.",
+        "ID": "4bce8c25576650d28685dfb8cad93f2e",
+        "IP": "127.0.0.1",
+        "PORT": 7321,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "4th succ of tested peer.",
+        "ID": "760902972d9654a489eae57ab9e3e493",
+        "IP": "127.0.0.1",
+        "PORT": 7325,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "No significance to tested peer.",
+        "ID": "83a7f2b21e3656ab97dbb1a4204dae82",
+        "IP": "127.0.0.1",
+        "PORT": 7323,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "No significance to tested peer.",
+        "ID": "a9a9299918a059dabdcba4d3a1a0c0fb",
+        "IP": "127.0.0.1",
+        "PORT": 7326,
+        "NUM_SUCCS": 4
+      }
+    ],
+    "EXPECTED_SUCCS": [
+      {
+        "COMMENT": "1st succ before and after new nodes join.",
+        "ID": "ef4feef2d5a75a40a4e179083adcd95e",
+        "IP": "127.0.0.1",
+        "PORT": 7322,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "2nd succ before and after new nodes join.",
+        "ID": "3ee5eb6d91f7562ab7421d354afc8628",
+        "IP": "127.0.0.1",
+        "PORT": 7324,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "3rd succ of tested peer.",
+        "ID": "4bce8c25576650d28685dfb8cad93f2e",
+        "IP": "127.0.0.1",
+        "PORT": 7321,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "4th succ of tested peer.",
+        "ID": "760902972d9654a489eae57ab9e3e493",
+        "IP": "127.0.0.1",
+        "PORT": 7325,
+        "NUM_SUCCS": 4
+      }
+    ]
+  },
+  "NO_CHANGES_NEEDED": {
+    "PEERS": [
+      {
+        "COMMENT": "Peer being tested.",
+        "ID": "c67ef4f1c1b056db862db57e9a41ebff",
+        "IP": "127.0.0.1",
+        "PORT": 7330,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "1st succ of tested peer, before and after new nodes join.",
+        "ID": "e8093f00e0c45068bf6dd27359a74a10",
+        "IP": "127.0.0.1",
+        "PORT": 7335,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "2nd succ of tested peer, before and after new nodes join.",
+        "ID": "5c668edf612f5dba840115fd8d5100b0",
+        "IP": "127.0.0.1",
+        "PORT": 7334,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "3rd succ of tested peer, before and after new nodes join.",
+        "ID": "8dba7dd85ab754a18a5d07a21c1531e1",
+        "IP": "127.0.0.1",
+        "PORT": 7333,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "4th succ of tested peer, before and after new nodes join.",
+        "ID": "a08d617827f052fd9265b762ace2ab98",
+        "IP": "127.0.0.1",
+        "PORT": 7336,
+        "NUM_SUCCS": 4
+      }
+    ],
+    "JOINING_PEERS": [
+      {
+        "COMMENT": "No significance to tested peer.",
+        "ID": "ef4feef2d5a75a40a4e179083adcd95e",
+        "IP": "127.0.0.1",
+        "PORT": 7331,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "No significance to tested peer.",
+        "ID": "3ee5eb6d91f7562ab7421d354afc8628",
+        "IP": "127.0.0.1",
+        "PORT": 7332,
+        "NUM_SUCCS": 4
+      }
+    ],
+    "EXPECTED_SUCCS": [
+      {
+        "ID": "e8093f00e0c45068bf6dd27359a74a10",
+        "IP": "127.0.0.1",
+        "PORT": 7335
+      }, {
+        "ID": "5c668edf612f5dba840115fd8d5100b0",
+        "IP": "127.0.0.1",
+        "PORT": 7334
+      }, {
+        "ID": "8dba7dd85ab754a18a5d07a21c1531e1",
+        "IP": "127.0.0.1",
+        "PORT": 7333
+      }, {
+        "ID": "a08d617827f052fd9265b762ace2ab98",
+        "IP": "127.0.0.1",
+        "PORT": 7336
+      }
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "VALID": {
+    "PEER": {
+      "IP": "127.0.0.1",
+      "PORT": 7602,
+      "NUM_SUCCS": 3
+    },
+    "CREATE_REQ": {
+      "COMMAND": "CREATE_KEY",
+      "KEY": "00000000000000000000000000000000",
+      "VALUE": "val1"
+    },
+    "READ_REQ": {
+      "COMMAND": "READ_KEY",
+      "KEY": "00000000000000000000000000000000"
+    },
+    "EXPECTED_VAL": "val1"
+  },
+  "NON_EXISTENT_KEY": {
+    "PEER": {
+      "IP": "127.0.0.1",
+      "PORT": 7603,
+      "NUM_SUCCS": 3
+    },
+    "READ_REQ": {
+      "COMMAND": "READ_KEY",
+      "KEY": "00000000000000000000000000000000"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "CHECKS_SUCCS": {
+    "PEERS": [
+      {
+        "COMMENT": "Peer being tested.",
+        "KILL": false,
+        "ID": "49762b6189f85d68919175419679be64",
+        "IP": "127.0.0.1",
+        "PORT": 7400,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "Will be killed.",
+        "KILL": true,
+        "ID": "8a9e720078d4584eb498adbde8d09b03",
+        "IP": "127.0.0.1",
+        "PORT": 7402,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "Will be killed.",
+        "KILL": true,
+        "ID": "ee990d95b4b0548687b588f1ea39661b",
+        "IP": "127.0.0.1",
+        "PORT": 7403,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "Should be immediate succ of 7400 after intermediate nodes are killed and stabilize is run.",
+        "KILL": false,
+        "ID": "152ee811afc55300b1a659734289d2d5",
+        "IP": "127.0.0.1",
+        "PORT": 7401,
+        "NUM_SUCCS": 4
+      }
+    ],
+    "EXPECTED_SUCC_ID": "152ee811afc55300b1a659734289d2d5"
+  },
+  "NOTIFIES_SUCC_WITH_DEAD_PRED": {
+    "PEERS": [
+      {
+        "COMMENT": "Peer being tested.",
+        "KILL": false,
+        "ID": "8d68b3878c0f589c81d8ad0a7572857f",
+        "IP": "127.0.0.1",
+        "PORT": 7405,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "Will be killed.",
+        "KILL": true,
+        "ID": "a63c4394f9c85b959d2b22036892eee2",
+        "IP": "127.0.0.1",
+        "PORT": 7406,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "Will be killed.",
+        "KILL": true,
+        "ID": "e5fdd03aace3512daffd29e2e0e7f09b",
+        "IP": "127.0.0.1",
+        "PORT": 7408,
+        "NUM_SUCCS": 4
+      }, {
+        "COMMENT": "Should list 7405 as pred after 7405 runs stabilize",
+        "KILL": false,
+        "ID": "69044cd748f35661b1ebe685abc8506c",
+        "IP": "127.0.0.1",
+        "PORT": 7407,
+        "NUM_SUCCS": 4
+      }
+    ],
+    "STABILIZE_IND": 0,
+    "TESTED_IND": 3,
+    "EXPECTED_PRED_ID": "8d68b3878c0f589c81d8ad0a7572857f"
+  }
+}

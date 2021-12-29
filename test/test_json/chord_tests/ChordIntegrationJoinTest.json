@@ -1,0 +1,74 @@
+{
+  "PEERS": [
+    {
+      "IP": "127.0.0.1",
+      "PORT": 5000,
+      "ID": "36a22c462b875f71b5bad53d1909761d",
+      "NUM_SUCCS": 3,
+      "EXPECTED_PREDECESSOR_ID": "e2a708de118a51bf948e9320eeac848c",
+      "EXPECTED_KV_PAIRS": {
+        "ed7e9a11fb0b56d58fe3aab83e01dff2"  : "value6",
+        "f02f9a33a1325add82c9f2935627fde8"  : "value7",
+        "ad40ad8bebe5093bd9ea7a252b372b0"   : "value3",
+        "21c6b801af4458738a829ee4726f14c0"  : "value9"
+      }
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5002,
+      "ID": "633bd46b5c515992a5ce553d0680bec8",
+      "NUM_SUCCS": 3,
+      "EXPECTED_PREDECESSOR_ID": "36a22c462b875f71b5bad53d1909761d",
+      "EXPECTED_KV_PAIRS": {
+        "4d1f65d6a4af5419a51f6406aa23a2bf"  : "value5"
+      }
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5003,
+      "ID": "94227b6ddb5a5ee68a4b8c7627640f5d",
+      "NUM_SUCCS": 3,
+      "EXPECTED_PREDECESSOR_ID": "633bd46b5c515992a5ce553d0680bec8",
+      "EXPECTED_KV_PAIRS": {
+        "8f218246f4e35dc7b60419ff9fcbce73"  : "value1"
+      }
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5001,
+      "ID": "ad8bf45ee3435094b624b513fdb21c1d",
+      "NUM_SUCCS": 3,
+      "EXPECTED_PREDECESSOR_ID": "94227b6ddb5a5ee68a4b8c7627640f5d",
+      "EXPECTED_KV_PAIRS": {
+        "a81fd109d24757e39fcb2fb9ab345672"  : "value2",
+        "a8f274ce76875f48b20ff0fa1d9e3941"  : "value8"
+      }
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5005,
+      "ID": "b9c49b7b7a18545e924cf36f8b9d3afd",
+      "NUM_SUCCS": 3,
+      "EXPECTED_PREDECESSOR_ID": "ad8bf45ee3435094b624b513fdb21c1d",
+      "EXPECTED_KV_PAIRS": {}
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5004,
+      "ID": "e2a708de118a51bf948e9320eeac848c",
+      "NUM_SUCCS": 3,
+      "EXPECTED_PREDECESSOR_ID": "b9c49b7b7a18545e924cf36f8b9d3afd",
+      "EXPECTED_KV_PAIRS": {
+        "da9c4c9382605ae289c62a51f14a7949"  : "value0",
+        "db8d652ed2e7541ea8034f2603232d64"  : "value4"
+      }
+    }
+  ],
+  "KV_PAIRS" : {
+    "key0" : "value0",
+    "key1" : "value1",
+    "key2" : "value2",
+    "key3" : "value3",
+    "key4" : "value4",
+    "key5" : "value5",
+    "key6" : "value6",
+    "key7" : "value7",
+    "key8" : "value8",
+    "key9" : "value9"
+  }
+}

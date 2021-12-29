@@ -1,0 +1,111 @@
+{
+  "NOTIFY_FROM_PRED": {
+    "PEERS": [
+      {
+        "ID": "32e9ad2dd86d5757a3cc05139f11a1fc",
+        "MIN_KEY": "b76590b7ba1057639f2c47608be6368d",
+        "IP": "127.0.0.1",
+        "PORT": 7200,
+        "NUM_SUCCS": 3
+      }, {
+        "ID": "3c8580aba25053548f34e28f9f8dad1f",
+        "MIN_KEY": "32e9ad2dd86d5757a3cc05139f11a1fd",
+        "IP": "127.0.0.1",
+        "PORT": 7201,
+        "NUM_SUCCS": 3
+      }, {
+        "ID": "b76590b7ba1057639f2c47608be6368c",
+        "MIN_KEY": "3c8580aba25053548f34e28f9f8dad20",
+        "IP": "127.0.0.1",
+        "PORT": 7202,
+        "NUM_SUCCS": 3
+      }
+    ],
+    "KEYS_TO_STORE": {
+      "30000000000000000000000000000000": "val0",
+      "31000000000000000000000000000000": "val1",
+      "32000000000000000000000000000000": "val2"
+    },
+    "KEYS_TO_XFER": {
+      "30000000000000000000000000000000": "val0",
+      "31000000000000000000000000000000": "val1",
+      "32000000000000000000000000000000": "val2"
+    },
+    "JSON_REQ": {
+      "NEW_PEER": {
+        "ID": "32e9ad2dd86d5757a3cc05139f11a1fb",
+        "MIN_KEY": "00000000000000000000000000000000",
+        "IP": "127.0.0.1",
+        "PORT": 7204
+      }
+    }
+  },
+  "NOTIFY_FROM_SUCC": {
+    "PEERS": [
+      {
+        "ID": "66eab5b13a2c503e9233b5fb9f497435",
+        "IP": "127.0.0.1",
+        "PORT": 7205,
+        "NUM_SUCCS": 3
+      }, {
+        "ID": "67574a9824085535a8f273d0edceb97e",
+        "IP": "127.0.0.1",
+        "PORT": 7206,
+        "NUM_SUCCS": 3
+      }
+    ],
+    "JSON_REQ": {
+      "NEW_PEER": {
+        "ID": "66eab5b13a2c503e9233b5fb9f497436",
+        "MIN_KEY": "66eab5b13a2c503e9233b5fb9f497437",
+        "IP": "127.0.0.1",
+        "PORT": 7207
+      }
+    }
+  },
+  "NOTIFY_FROM_IRRELEVANT_NODE": {
+    "PEERS": [
+      {
+        "COMMENT": "Tested node.",
+        "ID": "82b60460be225f0a86343a1f3ffc929f",
+        "IP": "127.0.0.1",
+        "PORT": 7207,
+        "NUM_SUCCS": 3
+      }, {
+        "COMMENT": "3rd succ of tested node.",
+        "ID": "da9a318b05c9532db7e5899845cf9139",
+        "IP": "127.0.0.1",
+        "PORT": 7208,
+        "NUM_SUCCS": 3
+      }, {
+        "COMMENT": "2nd succ of tested node.",
+        "ID": "b085144014335de682cbb015b49ad541",
+        "IP": "127.0.0.1",
+        "PORT": 7209,
+        "NUM_SUCCS": 3
+      }, {
+        "COMMENT": "Pred of tested node.",
+        "ID": "4c56b0bc872a5e308b60fcc3f8be6340",
+        "IP": "127.0.0.1",
+        "PORT": 7210,
+        "NUM_SUCCS": 3
+      }, {
+        "COMMENT": "1st succ of tested node.",
+        "ID": "a5ef70e38b145d05b3ef4c2552f50439",
+        "IP": "127.0.0.1",
+        "PORT": 7211,
+        "NUM_SUCCS": 3
+      }
+    ],
+    "JSON_REQ": {
+      "NEW_PEER": {
+        "COMMENT": "Id in between 3rd succ and pred of tested node, so notify should do nothing.",
+        "ID": "e0000000000000000000000000000000",
+        "IP": "127.0.0.1",
+        "PORT": 1,
+        "NUM_SUCCS": 3
+      }
+    },
+    "NON_NOTABLE_ID": "e0000000000000000000000000000000"
+  }
+}

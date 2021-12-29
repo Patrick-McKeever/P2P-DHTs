@@ -1,0 +1,61 @@
+{
+  "GET_SUCC_OF_LOCAL_KEY": {
+    "PEER": {
+      "ID": "6417d43d8845370a6da0042dd7a12b2",
+      "IP": "127.0.0.1",
+      "PORT": 0,
+      "NUM_SUCCS": 3,
+      "MINKEY": "0000000000000000000000000000000",
+      "SUCCESSOR": {
+        "IP_ADDR": "127.0.0.1",
+        "PORT": 1,
+        "ID": "fffffffffffffffffffffffffffffff",
+        "MIN_KEY": "0000000000000000000000000000000"
+      }
+    },
+    "KEY_TO_LOOKUP": "1000000000000000000000000000000"
+  },
+  "GET_SUCC_FROM_FINGER_TABLE": {
+    "PEERS": [
+      {
+        "IP": "127.0.0.1",
+        "PORT": 7001,
+        "NUM_SUCCS": 3
+      }, {
+        "IP": "127.0.0.1",
+        "PORT": 7002,
+        "NUM_SUCCS": 3
+      }
+    ],
+    "KEY_TO_LOOKUP": "62a0959bff135ad296fbdc29252d927b",
+    "EXPECTED_SUCC_ID": "5c22f4050c375657b05b35732eef0130"
+  },
+  "GET_SUCC_FROM_PREDECESSOR": {
+    "PEERS": [
+      {
+        "IP": "127.0.0.1",
+        "PORT": 7003,
+        "NUM_SUCCS": 3
+      }, {
+        "IP": "127.0.0.1",
+        "PORT": 7004,
+        "NUM_SUCCS": 3
+      }
+    ],
+    "KEY_TO_LOOKUP": "61b23792c54457c5ac5b7a95b35722dc"
+  },
+  "GET_SUCC_FAILING": {
+    "PEER": {
+        "IP": "127.0.0.1",
+        "PORT": 7003,
+        "NUM_SUCCS": 3,
+        "SUCCESSOR": {
+          "IP_ADDR": "127.0.0.1",
+          "PORT": 1,
+          "ID": "fffffffffffffffffffffffffffffff",
+          "MIN_KEY": "0000000000000000000000000000000"
+        }
+      },
+    "KEY_TO_LOOKUP": "0000000000000000000000000000000"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "PEERS": [
+    {
+      "IP": "127.0.0.1",
+      "PORT": 5012,
+      "NUM_SUCCS": 3,
+      "ID": "91186395ae2562aaa1ff7f3513747e9",
+      "EXPECTED_SUCCS": [
+        "1e23b1a2d0d1590da22d6af5a184aa30",
+        "4280c8cd94a25e6b85b356811c402870",
+        "48871c0d53b65d9184b9517f5d0f6480"
+      ]
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5017,
+      "NUM_SUCCS": 3,
+      "ID": "1e23b1a2d0d1590da22d6af5a184aa30",
+      "EXPECTED_SUCCS": [
+        "4280c8cd94a25e6b85b356811c402870",
+        "48871c0d53b65d9184b9517f5d0f6480",
+        "4b53cf5972115268a405a64cf5bbbf55"
+      ]
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5015,
+      "NUM_SUCCS": 3,
+      "ID": "4280c8cd94a25e6b85b356811c402870",
+      "EXPECTED_SUCCS": [
+        "48871c0d53b65d9184b9517f5d0f6480",
+        "4b53cf5972115268a405a64cf5bbbf55",
+        "e81f3a999b615ccdaf109ed2648334e2"
+      ]
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5013,
+      "NUM_SUCCS": 3,
+      "ID": "48871c0d53b65d9184b9517f5d0f6480",
+      "EXPECTED_SUCCS": [
+        "4b53cf5972115268a405a64cf5bbbf55",
+        "e81f3a999b615ccdaf109ed2648334e2",
+        "91186395ae2562aaa1ff7f3513747e9"
+      ]
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5016,
+      "NUM_SUCCS": 3,
+      "ID": "4b53cf5972115268a405a64cf5bbbf55",
+      "EXPECTED_SUCCS": [
+        "e81f3a999b615ccdaf109ed2648334e2",
+        "91186395ae2562aaa1ff7f3513747e9",
+        "1e23b1a2d0d1590da22d6af5a184aa30"
+      ]
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5014,
+      "NUM_SUCCS": 3,
+      "ID": "e81f3a999b615ccdaf109ed2648334e2",
+      "EXPECTED_SUCCS": [
+        "91186395ae2562aaa1ff7f3513747e9",
+        "1e23b1a2d0d1590da22d6af5a184aa30",
+        "4280c8cd94a25e6b85b356811c402870"
+      ]
+    }
+  ]
+}

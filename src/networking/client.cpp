@@ -36,57 +36,63 @@ static std::vector<std::string> Split(const std::string &s,
 static std::string SanitizeJson(const std::string &serializedJson)
 {
     std::vector<std::string> split_by_bracket = Split(serializedJson, "}");
-    if(!split_by_bracket.back().empty())
+    if(!split_by_bracket.back().empty()) {
         split_by_bracket.pop_back();
+    }
 
     std::string res_str;
-    for(const auto &sub_str : split_by_bracket)
+    for(const auto &sub_str : split_by_bracket) {
         res_str += sub_str + "}";
+    }
 
     return res_str;
 }
 
-Client::Client()
-        : reader_((new Json::CharReaderBuilder)->newCharReader())
-{}
-
 Json::Value Client::MakeRequest(const std::string &ip_addr, unsigned short port,
                                 const Json::Value &request)
 {
-    boost::asio::io_context io_context;
-
+    boost::asio::io_context io;
+    Json::StreamWriterBuilder writer_;
+    // Send minified JSON.
+    writer_["indentation"] = "";
     std::string serialized_req = Json::writeString(writer_, request);
-    tcp::socket s(io_context);
 
-    tcp::resolver resolver(io_context);
-    try {
-        s.connect({boost::asio::ip::address::from_string(ip_addr), port});
-    } catch(const std::exception &err) {
-        throw std::exception();
-    }
+    tcp::socket s(io);
+
+    // connect, send
+    s.connect({boost::asio::ip::address::from_string(ip_addr), port});
     boost::asio::write(s, boost::asio::buffer(serialized_req));
     s.shutdown(tcp::socket::shutdown_send);
 
-    error_code ec;
-    char reply[2048];
+    // read for max 5s
+    boost::asio::steady_timer timer(io, std::chrono::seconds(5));
+    timer.async_wait([&](error_code ec) { s.cancel(); });
 
-    size_t reply_length = boost::asio::read(s, boost::asio::buffer(reply),
-                                            ec);
+    std::string reply_buf, json_data;
+    error_code  reply_ec;
+    async_read(s, boost::asio::dynamic_buffer(reply_buf),
+               [&](error_code ec, size_t) { timer.cancel(); reply_ec = ec; });
 
-    Json::Value json_resp;
-    JSONCPP_STRING parse_err;
-    std::string resp_str(reply);
-    std::string sanitized_resp = SanitizeJson(resp_str);
+    io.run();
 
-    Json::CharReader *reader = Json::CharReaderBuilder().newCharReader();
-    bool success = reader->parse(sanitized_resp.c_str(),
-                                 sanitized_resp.c_str() + sanitized_resp.length(),
-                                 &json_resp, &parse_err);
-    delete reader;
-    if (success)
-        return json_resp;
+    if (!reply_ec || reply_ec == boost::asio::error::eof) {
+        Json::Value json_resp;
+        JSONCPP_STRING parse_err;
+        std::string sanitized_resp = SanitizeJson(reply_buf);
 
-    throw std::runtime_error("Error parsing response.");
+        Json::CharReader *reader = Json::CharReaderBuilder().newCharReader();
+        bool success = reader->parse(sanitized_resp.c_str(),
+                                     sanitized_resp.c_str() + sanitized_resp.length(),
+                                     &json_resp, &parse_err);
+        delete reader;
+        if (success) {
+            return json_resp;
+        }
+
+        throw std::runtime_error("Error parsing response.");
+    } else {
+        throw boost::system::system_error(reply_ec);
+    }
 }
 
 bool Client::IsAlive(const std::string &ip_addr, unsigned short port)

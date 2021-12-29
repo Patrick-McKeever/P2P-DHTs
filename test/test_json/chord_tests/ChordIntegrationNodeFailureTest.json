@@ -1,0 +1,61 @@
+{
+  "PEERS": [
+    {
+      "IP": "127.0.0.1",
+      "PORT": 5024,
+      "NUM_SUCCS": 3
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5025,
+      "NUM_SUCCS": 3
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5027,
+      "NUM_SUCCS": 3,
+      "ID": "4bd550c153cf5befab37e6f593c9165c",
+      "EXPECTED_MINKEY": "f12052570bf95bb390763d4b4289bb95",
+      "EXPECTED_PREDECESSOR_ID": "f12052570bf95bb390763d4b4289bb94",
+      "EXPECTED_SUCCS": [
+        "67a31c15b8cd501181bb1ed543d499e0",
+        "c4edab9193735085b7b99847e1449607",
+        "f12052570bf95bb390763d4b4289bb94"
+      ]
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5028,
+      "NUM_SUCCS": 3,
+      "ID": "67a31c15b8cd501181bb1ed543d499e0",
+      "EXPECTED_MINKEY": "4bd550c153cf5befab37e6f593c9165d",
+      "EXPECTED_PREDECESSOR_ID": "4bd550c153cf5befab37e6f593c9165c",
+      "EXPECTED_SUCCS": [
+        "c4edab9193735085b7b99847e1449607",
+        "f12052570bf95bb390763d4b4289bb94",
+        "4bd550c153cf5befab37e6f593c9165c"
+      ]
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5029,
+      "NUM_SUCCS": 3,
+      "ID": "c4edab9193735085b7b99847e1449607",
+      "EXPECTED_MINKEY": "67a31c15b8cd501181bb1ed543d499e1",
+      "EXPECTED_PREDECESSOR_ID": "67a31c15b8cd501181bb1ed543d499e0",
+      "EXPECTED_SUCCS": [
+        "f12052570bf95bb390763d4b4289bb94",
+        "4bd550c153cf5befab37e6f593c9165c",
+        "67a31c15b8cd501181bb1ed543d499e0"
+      ]
+    }, {
+      "IP": "127.0.0.1",
+      "PORT": 5026,
+      "NUM_SUCCS": 3,
+      "ID": "f12052570bf95bb390763d4b4289bb94",
+      "EXPECTED_MINKEY": "c4edab9193735085b7b99847e1449608",
+      "EXPECTED_PREDECESSOR_ID": "c4edab9193735085b7b99847e1449607",
+      "EXPECTED_SUCCS": [
+        "4bd550c153cf5befab37e6f593c9165c",
+        "67a31c15b8cd501181bb1ed543d499e0",
+        "c4edab9193735085b7b99847e1449607"
+      ]
+    }
+  ]
+}

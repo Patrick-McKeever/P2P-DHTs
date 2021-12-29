@@ -1,0 +1,28 @@
+{
+  "VALID": {
+    "PEER": {
+      "IP": "127.0.0.1",
+      "PORT": 7600,
+      "NUM_SUCCS": 3
+    },
+    "JSON_REQ": {
+      "COMMAND": "CREATE_KEY",
+      "KEY": "00000000000000000000000000000000",
+      "VALUE": "val1"
+    },
+    "EXPECTED_KEY": "00000000000000000000000000000000",
+    "EXPECTED_VAL": "val1"
+  },
+  "NON_LOCAL_KEY": {
+    "PEER": {
+      "IP": "127.0.0.1",
+      "PORT": 7601,
+      "NUM_SUCCS": 3
+    },
+    "JSON_REQ": {
+      "COMMAND": "CREATE_KEY",
+      "KEY": "00000000000000000000000000000000",
+      "VALUE": "val1"
+    }
+  }
+}
