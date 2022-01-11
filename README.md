@@ -1,5 +1,7 @@
 #P2P DHTs
+
 ##Theory
+
 This library contains basic C++ implementations of the Chord and DHash protocols. The following section will detail the
 theory underlying these protocols.
 ###The Chord Protocol
