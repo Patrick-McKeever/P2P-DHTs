@@ -310,6 +310,11 @@ void AbstractChordPeer::DownloadFile(const std::string &file_name,
  *                      around the ring, as well as the relevant handlers.
  * -------------------------------------------------------------------------- */
 
+RemotePeer AbstractChordPeer::GetSuccessor(const std::string &unhashed_key)
+{
+    return GetSuccessor(ChordKey(unhashed_key, false));
+}
+
 RemotePeer AbstractChordPeer::GetSuccessor(const ChordKey &key)
 {
     // Account for case where key is stored locally.
@@ -331,7 +336,12 @@ Json::Value AbstractChordPeer::GetSuccHandler(const Json::Value &req)
     return Json::Value(succ);
 }
 
-// We changed this definition. Is this causing the hanging?
+std::vector<RemotePeer>
+AbstractChordPeer::GetNSuccessors(const std::string &unhashed_key, int n)
+{
+    return GetNSuccessors(ChordKey(unhashed_key, false), n);
+}
+
 std::vector<RemotePeer> AbstractChordPeer::GetNSuccessors(const ChordKey &key,
                                                           int n)
 {
@@ -360,6 +370,11 @@ std::vector<RemotePeer> AbstractChordPeer::GetNSuccessors(const ChordKey &key,
 
     Log("Got n succs");
     return successors_list;
+}
+
+RemotePeer AbstractChordPeer::GetPredecessor(const std::string &unhashed_key)
+{
+    return GetPredecessor(ChordKey(unhashed_key, false));
 }
 
 RemotePeer AbstractChordPeer::GetPredecessor(const ChordKey &key)
@@ -405,6 +420,12 @@ Json::Value AbstractChordPeer::GetPredHandler(const Json::Value &req)
     ChordKey key(req["KEY"].asString(), true);
     RemotePeer pred = GetPredecessor(key);
     return Json::Value(pred);
+}
+
+std::vector<RemotePeer>
+AbstractChordPeer::GetNPredecessors(const std::string &unhashed_key, int n)
+{
+    return GetNPredecessors(ChordKey(unhashed_key, false), n);
 }
 
 std::vector<RemotePeer> AbstractChordPeer::GetNPredecessors(const ChordKey &key,

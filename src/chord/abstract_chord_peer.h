@@ -103,7 +103,59 @@ public:
      */
     virtual std::string Read(const std::string &unhashed) = 0;
 
+    /**
+     * Retrieve the successor node of a given key.
+     * @param unhashed_key The unhashed version of the key to lookup in the
+     *                     overlay network.
+     * @return The peer possessing the lowest identifier in the overlay network
+     *         which exceeds the SHA-1 hash of unhashed_key.
+     */
+    RemotePeer GetSuccessor(const std::string &unhashed_key);
+
+    /**
+     * Retrieve the n successors of a given key.
+     * @param unhashed_key The unhashed version of the key to lookup in the
+     *                     overlay network.
+     * @param n The number of peers to retrieve.
+     * @return The list of peers possessing the n lowest identifiers in the
+     *         overlay network which are higher than the SHA-1 hash of
+     *         unhashed_key.
+     */
+    std::vector<RemotePeer> GetNSuccessors(const std::string &unhashed_key,
+                                           int n);
+
+    /**
+     * Retrieve the successor node of a given key.
+     * @param unhashed_key The unhashed version of the key to lookup in the
+     *                     overlay network.
+     * @return The peer possessing the highest identifier in the overlay network
+     *         which is lower than the SHA-1 hash of unhashed_key.
+     */
+    RemotePeer GetPredecessor(const std::string &unhashed_key);
+
+    /**
+     * Retrieve the n predecessor peers of the given key.
+     * @param unhashed_key The key whose predecessors will be retrieved.
+     * @param n The number of peers to retrieve.
+     * @return The list of peers possessing the n highest identifiers in the
+     *         overlay network which are lower than the SHA-1 hash of
+     *         unhashed_key.
+     */
+    std::vector<RemotePeer> GetNPredecessors(const std::string &unhashed_key,
+                                             int n);
+
+    /**
+     * Upload a file to the overlay network.
+     * @param file_path The path of the file to upload.
+     */
     void UploadFile(const std::string &file_path);
+    /**
+     * Download a file's contents from the overlay network, and write it to
+     * output_path.
+     * @param file_name The name of the file stored on the overlay network.
+     * @param output_path The name of the file into which the former's contents
+     *                    will be downloaded.
+     */
     void DownloadFile(const std::string &file_name,
                       const std::string &output_path);
 
