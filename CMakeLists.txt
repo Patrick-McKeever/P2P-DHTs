@@ -1,11 +1,16 @@
 cmake_minimum_required(VERSION 3.19)
 project(chord_and_dhash)
 set(CMAKE_CXX_STANDARD 20)
+
+option(BUILD_TESTING "Build unit tests." OFF)
+
 add_subdirectory(src)
 
-add_executable(
+# Run tests if option is specified from command line
+if(BUILD_TESTING)
+    add_executable(
         chord_and_dhash
-        main.cpp
+        test/main.cpp
         test/chord_test.cpp
         test/dhash_test.cpp
         test/information_dispersal_test.cc
@@ -13,6 +18,9 @@ add_executable(
         test/json_reader.h
         test/key_test.cc
         test/merkle_tree_test.cc
-        test/server_test.cpp)
+        test/server_test.cpp
+    )
+endif()
+
 
 target_link_libraries(chord_and_dhash dhts)
