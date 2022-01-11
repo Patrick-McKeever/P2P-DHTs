@@ -314,36 +314,3 @@ TEST(Idk, ReadFile)
     out << a;
     out.close();
 }
-
-TEST(DHashIntegration, UploadFile)
-{
-    std::vector<std::shared_ptr<DHashPeer>> peers {
-        std::make_shared<DHashPeer>("127.0.0.1", 5000, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5001, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5002, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5003, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5004, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5005, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5006, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5007, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5008, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5009, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5010, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5011, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5012, 14),
-        std::make_shared<DHashPeer>("127.0.0.1", 5013, 14)
-    };
-
-    peers[0]->StartChord();
-    for(int i = 1; i < peers.size(); ++i) {
-        peers[i]->Join("127.0.0.1", 5000);
-    }
-
-    peers[0]->UploadFile("/home/patrick/Music/pilgrims_chorus.webm");
-    peers[0]->DownloadFile("/home/patrick/Music/pilgrims_chorus.webm",
-                           "out.webm");
-}
-
-TEST(Idk, SendFileOverNetwork)
-{
-}

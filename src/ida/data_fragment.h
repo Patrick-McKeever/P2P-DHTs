@@ -18,6 +18,11 @@
 class DataFragment {
 public:
     /**
+     * Default constructor.
+     */
+    DataFragment() = default;
+
+    /**
      * Construct from vector of doubles and index.
      *
      * @param vector One row of matrix from IDA::Encode.

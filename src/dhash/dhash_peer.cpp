@@ -113,7 +113,6 @@ void DHashPeer::Create(const ChordKey &key, const DataBlock &val)
 
     for(int i = 0; i < succ_list.size(); i++) {
         RemotePeer succ = succ_list.at(i);
-        Log("Creating " + std::to_string(i) + "th fragment");
         if(succ.id_ == id_) {
             db_.Insert({ key, val.fragments_.at(i) });
             num_replicas++;
@@ -142,7 +141,6 @@ bool DHashPeer::CreateKey(const ChordKey &key, const DataFragment &val,
 
 Json::Value DHashPeer::CreateKeyHandler(const Json::Value &req)
 {
-    Log("Received CK request");
     Json::Value create_resp;
     ChordKey key(req["KEY"].asString(), true);
     DataFragment val(req["VALUE"]);
@@ -152,7 +150,6 @@ Json::Value DHashPeer::CreateKeyHandler(const Json::Value &req)
     }
 
     db_.Insert({ key, val });
-    Log("Completed CK request");
     return create_resp;
 }
 
@@ -170,7 +167,6 @@ DataBlock DHashPeer::Read(const ChordKey &key)
 
     int i = 0;
     for(auto &succ : succ_list) {
-        Log("Getting " + std::to_string(++i) + "th frag");
         if(fragments.size() == m_) {
             break;
         }
@@ -216,9 +212,7 @@ Json::Value DHashPeer::ReadKeyHandler(const Json::Value &req)
 
     // Note that FragDb::Lookup will throw an error if the key is not found,
     // as it should.
-    Log("1");
     read_resp["VALUE"] = Json::Value(db_.Lookup(key));
-    Log("2");
     return read_resp;
 }
 
@@ -294,8 +288,6 @@ void DHashPeer::MaintenanceLoop()
             RunLocalMaintenance();
             timestamp = std::chrono::high_resolution_clock::now();
         } catch(const std::exception &ex) {
-            if(! continue_maintenance_)
-                break;
             Log("Continuing");
             timestamp = std::chrono::high_resolution_clock::now();
             continue;
@@ -327,7 +319,6 @@ void DHashPeer::RunGlobalMaintenance()
 
         // If this peer's id is contained within the n_ successors of the key
         // in question, then it should possess the key.
-        Log("1");
         std::vector<RemotePeer> succs = GetNSuccessors(next.first, n_);
         bool key_is_misplaced = true;
         for(int i = 0; i < succs.size(); ++i) {
@@ -547,7 +538,6 @@ Json::Value DHashPeer::HandleNotifyFromPred(const RemotePeer &new_pred)
     min_key_.Set(predecessor_.Get().id_ + 1);
 
     if(successors_.Size() == 0) {
-        Log("2");
         successors_.Populate(GetNSuccessors(id_ + 1, num_succs_));
     }
 

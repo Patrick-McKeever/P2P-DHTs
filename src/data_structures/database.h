@@ -15,7 +15,7 @@
 // When the time comes, substitute this out with the new data block file and
 // see what happens
 //#include "data_block.h"
- #include "../ida/data_block.h"
+#include "../ida/data_block.h"
 #include "merkle_tree.h"
 
 /**
@@ -36,15 +36,15 @@ public:
      * Constructor 1, make a new db, initialize merkel tree root.
      */
     GenericDB()
-        : size_(0)
+            : size_(0)
     {}
 
     /**
      * Constructor 2, construct from JSON.
      */
     GenericDB(const Json::Value &json_db)
-        : index_(json_db["INDEX"])
-        , size_(0)
+            : index_(json_db["INDEX"])
+            , size_(0)
     {
         for(auto kv_pair : json_db["DATA"]) {
             ++size_;
@@ -56,9 +56,9 @@ public:
      * here.)
      */
     GenericDB(const DbType &db)
-        : ThreadSafe()
-        , index_(db.index_)
-        , size_(db.size_)
+            : ThreadSafe()
+            , index_(db.index_)
+            , size_(db.size_)
     {};
 
     GenericDB(GenericDB &&rhs) noexcept

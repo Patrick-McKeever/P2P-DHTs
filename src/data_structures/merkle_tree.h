@@ -39,7 +39,7 @@ public:
      *                represented by ChordKey.
      */
     MerkleTree()
-        : max_key_(mp::pow(mp::cpp_int(ChordKey::Base()), ChordKey::Size()))
+            : max_key_(mp::pow(mp::cpp_int(ChordKey::Base()), ChordKey::Size()))
     {
         CreateChildren();
     }
@@ -55,9 +55,9 @@ public:
      *                 3rd child of the root, position would be { 3, 14 }.
      */
     MerkleTree(ChordKey min_key, ChordKey max_key, std::deque<int> position)
-        : min_key_(std::move(min_key))
-        , max_key_(std::move(max_key))
-        , position_(std::move(position))
+            : min_key_(std::move(min_key))
+            , max_key_(std::move(max_key))
+            , position_(std::move(position))
     {}
 
     /**
@@ -65,9 +65,9 @@ public:
      * @param json_node The JSON representation of the node in question.
      */
     explicit MerkleTree(const Json::Value &json_node)
-        : min_key_(json_node["MIN_KEY"].asString(), true)
-        , max_key_(json_node["KEY"].asString(), true)
-        , hash_(json_node["HASH"].asString(), true)
+            : min_key_(json_node["MIN_KEY"].asString(), true)
+            , max_key_(json_node["KEY"].asString(), true)
+            , hash_(json_node["HASH"].asString(), true)
     {
         for(const auto &dir : json_node["POSITION"]) {
             position_.push_back(dir.asInt());
@@ -85,7 +85,16 @@ public:
             Json::Value::const_iterator it;
             for (it = kv_pairs.begin(); it != kv_pairs.end(); ++it) {
                 ChordKey key(it.key().asString(), true);
-                data_.insert({key, ValType(it->asString())});
+
+                // There are very few circumstances where we wish to transmit
+                // an entire data fragment, which may be gigabytes large. An
+                // empty string will be interpreted as a case where we only wish
+                // to transmit the keys.
+                if(it->asString().empty()) {
+                    data_.insert({key, ValType()});
+                } else {
+                    data_.insert({key, ValType(it->asString())});
+                }
             }
         }
     }
@@ -175,7 +184,7 @@ public:
         // Otherwise, determine the child which holds the upper bound and the
         // child which holds the lower bound.
         unsigned long lb_index = ChildNum(lower_bound),
-                      ub_index = ChildNum(upper_bound);
+                ub_index = ChildNum(upper_bound);
 
         // Read all leaves of children in between the child containing the
         // lower bound and the child containing the upper bound.
@@ -183,7 +192,7 @@ public:
             for(int i = (int) lb_index; i <= ub_index; ++i) {
                 MerkleTree nth_child = child_nodes_.at(i);
                 ChordKey lower = lower_bound < nth_child.GetMinKey() ?
-                                     nth_child.GetMinKey() : lower_bound;
+                                 nth_child.GetMinKey() : lower_bound;
                 ChordKey upper = upper_bound > nth_child.GetMaxKey() /*- 1*/ ?
                                  nth_child.GetMaxKey() /*- 1*/ : upper_bound;
 
@@ -194,14 +203,14 @@ public:
             return keys_in_range;
         }
 
-        // If the lower bound is less than the upper bound (note that ChordKey
-        // is intended to represent a circular keyspace), then return the ranges
-        // [lb, MAX_KEY] and [0, ub].
+            // If the lower bound is less than the upper bound (note that ChordKey
+            // is intended to represent a circular keyspace), then return the ranges
+            // [lb, MAX_KEY] and [0, ub].
         else if(lb_index > ub_index) {
             ChordKey max_key(mp::pow(mp::cpp_int(ChordKey::Base()),
                                      ChordKey::Size()) - 1);
             KvMap below_ub = ReadRange(ChordKey(0), upper_bound),
-                  above_lb = ReadRange(lower_bound, max_key);
+                    above_lb = ReadRange(lower_bound, max_key);
             below_ub.insert(above_lb.begin(), above_lb.end());
             return below_ub;
         }
@@ -324,8 +333,8 @@ public:
             return *this;
         }
 
-        // If the directions have a greater depth than the tree itself, then
-        // the requested node does not exist.
+            // If the directions have a greater depth than the tree itself, then
+            // the requested node does not exist.
         else if(IsLeaf()) {
             return std::nullopt;
         }
@@ -590,7 +599,7 @@ public:
         if(IsLeaf()) {
             Json::Value kv_pairs;
             for(const auto &[key, val] : data_) {
-                kv_pairs[std::string(key)] = std::string(val);
+                kv_pairs[std::string(key)] = "";
             }
             node["KV_PAIRS"] = kv_pairs;
         }
@@ -706,7 +715,7 @@ private:
         mp::cpp_int key_space = mp::pow(mp::cpp_int(ChordKey::Base()),
                                         ChordKey::Size());
         mp::cpp_bin_float_100 key_len = ChordKey::BinaryLen(),
-                              child_id_len = log2(num_children_);
+                child_id_len = log2(num_children_);
         int shift(key_len - (child_id_len * (GetDepth() + 1)));
         mp::cpp_int shifted_key = (key_num >> shift);
         return (unsigned long) (shifted_key & (num_children_ - 1));
@@ -746,7 +755,7 @@ private:
     void CreateChildren()
     {
         mp::uint256_t key_range(max_key_ - min_key_),
-                      last_key = min_key_;
+                last_key = min_key_;
         for(int i = 0; i < num_children_; ++i) {
             mp::uint256_t ub = last_key + (key_range / num_children_);
             std::deque<int> child_pos = position_;
